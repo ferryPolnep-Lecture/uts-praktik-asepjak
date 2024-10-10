@@ -4,26 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Tambah KRS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="create_krs.php" method="post">
-        <label for="name">Nama Mahasiswa: </label><br>
-        <input type="text" name="name"><br>
-        <label for="nim">Nomor Induk Mahasiswa: </label><br>
-        <input type="text" name="nim"><br>
-        <label for="kelas">Kelas: </label><br>
-        <input type="radio" name="kelas" value="5A">Kelas 5A<br>
-        <input type="radio" name="kelas" value="5B">Kelas 5B<br>
-        <input type="radio" name="kelas" value="5C">Kelas 5C<br>
-        <input type="radio" name="kelas" value="5D">Kelas 5D<br>
-        <input type="radio" name="kelas" value="5E">Kelas 5E<br>
-        <label for="makul">Mata Kuliah Pilihan: </label><br>
-        <input type="checkbox" name="makul[]" value="WebApp">Web Application Development<br>
-        <input type="checkbox" name="makul[]" value="MobileApp">Mobile Application Development<br>
-        <input type="checkbox" name="makul[]" value="UI/UX">UI/UX Design<br>
-        <input type="checkbox" name="makul[]" value="SoftEng">Software Engineering<br>
-        <input type="checkbox" name="makul[]" value="DataEng">Data Engineering<br><br>
-        <input type="submit" value="Simpan KRS">
-    </form>
+    <div class="container">
+        <h2>Form Tambah KRS</h2>
+        <form action="create.php" method="post">
+            <div class="form-group">
+                <label for="nama">Nama Mahasiswa:</label>
+                <input type="text" id="nama" name="nama" required pattern="[A-Za-z\s]+" title="Nama hanya boleh berisi huruf">
+            </div>
+
+            <div class="form-group">
+                <label for="nim">NIM:</label>
+                <input type="text" id="nim" name="nim" required pattern="\d{10}" title="NIM harus berisi 10 digit angka">
+            </div>
+
+            <div class="form-group">
+                <label for="kelas">Kelas:</label>
+                <select id="kelas" name="kelas" required>
+                    <option value="">Pilih Kelas</option>
+                    <option value="5A">Kelas 5A</option>
+                    <option value="5B">Kelas 5B</option>
+                    <option value="5C">Kelas 5C</option>
+                    <option value="5D">Kelas 5D</option>
+                    <option value="5E">Kelas 5E</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Mata Kuliah Pilihan:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="makul[]" value="Web Application Development"> Web Application Development</label>
+                    <label><input type="checkbox" name="makul[]" value="Mobile Application Development"> Mobile Application Development</label>
+                    <label><input type="checkbox" name="makul[]" value="UI/UX Design"> UI/UX Design</label>
+                    <label><input type="checkbox" name="makul[]" value="Software Engineering"> Software Engineering</label>
+                    <label><input type="checkbox" name="makul[]" value="Data Engineering"> Data Engineering</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Simpan KRS" class="btn">
+            </div>
+        </form>
+        <a href="read.php" class="btn">Lihat Data KRS</a>
+    </div>
 </body>
 </html>
